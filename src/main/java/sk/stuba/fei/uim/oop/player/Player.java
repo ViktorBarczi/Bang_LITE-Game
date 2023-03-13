@@ -40,4 +40,10 @@ public class Player {
         this.hand.remove(i);
     }
 
+    public Card playCard(int i){
+        Card c = this.hand.get(i);
+        this.hand.remove(i);
+        return c;
+    }
+
 }

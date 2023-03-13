@@ -1,9 +1,8 @@
 package sk.stuba.fei.uim.oop.cards;
 
-public class Card {
+import sk.stuba.fei.uim.oop.bang.Game;
 
-
-    public void play(){
-        System.out.println("You have played a card");
+public abstract class Card {
+    public void play(Game game, int i){
     }
 }
