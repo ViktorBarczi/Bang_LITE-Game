@@ -8,10 +8,12 @@ public class Player {
     private final String name;
     private ArrayList<Card> hand;
     private int lives;
+    private int number;
 
-    public Player(String nm) {
+    public Player(String nm,int n) {
         this.name = nm;
         this.lives = 4;
+        this.number = n;
     }
 
     public String getName() {
