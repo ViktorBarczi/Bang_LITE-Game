@@ -11,9 +11,8 @@ public class Beer extends Card {
     }
 
     public void play(Player p, Board board){
-        int i = p.getNumber();
-        int lives = board.getPlayers().get(i).getLives();
+        int lives = p.getLives();
         lives = lives+1;
-        board.getPlayers().get(i).setLives(lives);
+        p.setLives(lives);
     }
 }

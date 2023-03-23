@@ -12,9 +12,9 @@ public class Indians extends Card {
 
     public void play(Player p, Board board){
         int lives;
-        int i = p.getNumber();
+
         for (int j = 0;j<board.getPlayers().size();j++){
-            if (j == i){
+            if (board.getPlayers().get(j).getName().equals(p.getName())){
                 continue;
             }
             lives = board.getPlayers().get(j).getLives();

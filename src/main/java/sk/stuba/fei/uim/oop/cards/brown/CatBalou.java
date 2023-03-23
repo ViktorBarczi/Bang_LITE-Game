@@ -13,10 +13,14 @@ public class CatBalou extends Card {
         super(str,i);
     }
 
-    public void play(Player p, Board board){
+    public void play(Player player, Board board){
         Random rand = new Random();
 
-        int playerToRemove = ZKlavesnice.readInt("Choose a choosenPlayer (2-"+ board.getPlayers().size() + "): ");
+        writeOutPlayers(board);
+        int playerToRemove = 0;
+        while(playerToRemove <= 0 || playerToRemove > board.getPlayers().size()) {
+            playerToRemove = ZKlavesnice.readInt("Choose a player (2-" + board.getPlayers().size() + "): ");
+        }
         Player choosenPlayer = board.getPlayers().get(playerToRemove);
 
         int cardToRemove =  ZKlavesnice.readInt("Choose one: (1) remove form hand or (2) remove form the board: ");

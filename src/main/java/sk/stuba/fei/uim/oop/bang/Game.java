@@ -25,7 +25,7 @@ public class Game {
 
         for(int i = 0;i<playersNum;i++){
             String name = ZKlavesnice.readString("Player " + (i+1) + " please type in your name: ");
-            Player p = new Player(name,i+1);
+            Player p = new Player(name);
             players.add(p);
         }
 

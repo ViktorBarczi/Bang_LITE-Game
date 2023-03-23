@@ -8,6 +8,6 @@ public class Miss extends Card {
         super(str,i);
     }
     public void play(Player p, Board board){
-            playedCard(board);
+        System.out.println("You cant play this card !!!");
         }
 }

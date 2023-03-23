@@ -13,9 +13,13 @@ public class Bang extends Card {
     }
 
     public void play(Player p,Board board){
-        int i = ZKlavesnice.readInt("Choose a player (2-"+ board.getPlayers().size() + "): ");
-        int lives = board.getPlayers().get(i).getLives();
+        writeOutPlayers(board);
+        int playerIndex = 0;
+        while(playerIndex <= 0 || playerIndex > board.getPlayers().size()) {
+            playerIndex = ZKlavesnice.readInt("Choose a player (2-" + board.getPlayers().size() + "): ");
+        }
+        int lives = board.getPlayers().get(playerIndex).getLives();
         lives = lives-1;
-        board.getPlayers().get(i).setLives(lives);
+        board.getPlayers().get(playerIndex).setLives(lives);
     }
 }

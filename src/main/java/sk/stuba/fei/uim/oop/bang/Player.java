@@ -10,12 +10,10 @@ public class Player {
     private ArrayList<Card> hand;
     private ArrayList<Card> infront;
     private int lives;
-    private int number;
 
-    public Player(String nm,int n) {
+    public Player(String nm) {
         this.name = nm;
         this.lives = 4;
-        this.number = n;
         this.hand = new ArrayList<>();
         this.infront = new ArrayList<>();
     }
@@ -32,9 +30,6 @@ public class Player {
         this.lives = lives;
     }
 
-    public int getHandSize(){
-        return this.hand.size();
-    }
 
     public ArrayList<Card> addCardToHand(ArrayList<Card> d) {
         Random rand = new Random();
@@ -46,10 +41,6 @@ public class Player {
 
     public void removeCardFromHand(int i){
         this.hand.remove(i);
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     public Card playCard(int i,Board board){
@@ -75,5 +66,11 @@ public class Player {
         this.infront = infront;
     }
 
+    public void placeInfrontPlayer(Card card){
+        this.infront.add(card);
+    }
+    public void removeFromInfornt(Card card){
+        this.infront.remove(card);
+    }
 
 }
