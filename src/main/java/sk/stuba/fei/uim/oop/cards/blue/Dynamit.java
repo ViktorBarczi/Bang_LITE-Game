@@ -13,7 +13,7 @@ public class Dynamit extends Card {
 
     }
 
-    public void effect(Player player,Board board,String card) {
+    public int effect(Player player,Board board,String card) {
         int chanse = (random.nextInt() % 8) + 1;
         if (chanse == 1){
             player.setLives(player.getLives() - 3);
@@ -32,5 +32,6 @@ public class Dynamit extends Card {
                 }
             }
         }
+        return chanse;
     }
 }

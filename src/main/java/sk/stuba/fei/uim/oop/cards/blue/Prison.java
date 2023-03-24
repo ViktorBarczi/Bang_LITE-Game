@@ -18,8 +18,9 @@ public class Prison extends Card {
         board.getPlayers().get(playerIndex).placeInfrontPlayer(this);
     }
 
-    public void effect(Player player,Board board,String card) {
+    public int effect(Player player,Board board,String card) {
         int chanse = (random.nextInt() % 4) + 1;
 
+        return chanse;
     }
 }

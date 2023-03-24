@@ -18,8 +18,8 @@ public class Bang extends Card {
         while(playerIndex <= 0 || playerIndex > board.getPlayers().size()) {
             playerIndex = ZKlavesnice.readInt("Choose a player (2-" + board.getPlayers().size() + "): ");
         }
-        int lives = board.getPlayers().get(playerIndex).getLives();
+        int lives = board.getPlayers().get(playerIndex-1).getLives();
         lives = lives-1;
-        board.getPlayers().get(playerIndex).setLives(lives);
+        board.getPlayers().get(playerIndex-1).setLives(lives);
     }
 }

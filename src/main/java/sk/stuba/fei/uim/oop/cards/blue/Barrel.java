@@ -16,11 +16,12 @@ public class Barrel extends Card {
     }
 
     @Override
-    public void effect(Player player,Board board,String card) {
+    public int effect(Player player,Board board,String card) {
         int chanse = (random.nextInt() % 4) + 1;
         if (card.equals("Bang") && chanse == 1){
             System.out.println("Player named: "+player.getName()+" hid behind the barrel !!!");
             player.setLives(player.getLives()+1);
         }
+        return chanse;
     }
 }

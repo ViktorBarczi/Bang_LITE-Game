@@ -22,11 +22,11 @@ public abstract class Card {
     }
 
     public int getType() {
-        return type;
+        return this.type;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public Board playedCard(Board board){
@@ -36,7 +36,7 @@ public abstract class Card {
         return board;
     }
 
-    public void effect(Player player,Board board,String card){System.out.println("This card has no effect!");}
+    public int effect(Player player,Board board,String card){System.out.println("This card has no effect!"); return -1;}
 
     public void writeOutPlayers(Board board){
         System.out.println("Players in game !!!");
