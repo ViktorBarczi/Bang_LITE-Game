@@ -15,9 +15,10 @@ public class Board {
     public Board(ArrayList<Player> allPlayers){
         this.players = allPlayers;
         this.deck = makeNewDeck();
+        this.sideDeck = new ArrayList<>();
         for (int i = 0;i<players.size();i++){
             for (int j = 0;j<players.get(i).getLives();j++){
-                this.deck = players.get(i).addCardToHand(this.deck);
+                players.get(i).addCardToHand(this);
             }
         }
 
@@ -25,39 +26,32 @@ public class Board {
 
     public ArrayList<Card> makeNewDeck(){
         ArrayList<Card> cardDeck = new ArrayList<>();
-        int num = 0;
         for (int i = 0;i<2;i++){
-            cardDeck.add(new Barrel("Barrel",num));
+            cardDeck.add(new Barrel("Barrel"));
         }
-        num++;
-        cardDeck.add(new Dynamit("Dynamit",num));
-        num++;
+
+        cardDeck.add(new Dynamit("Dynamit"));
+
         for (int i = 0;i<3;i++){
-            cardDeck.add(new Prison("Prison",num));
+            cardDeck.add(new Prison("Prison"));
         }
-        num++;
         for (int i = 0;i<30;i++){
-            cardDeck.add(new Bang("Bang",num));
+            cardDeck.add(new Bang("Bang"));
         }
-        num++;
         for (int i = 0;i<15;i++){
-            cardDeck.add(new Miss("Miss",num));
+            cardDeck.add(new Miss("Miss"));
         }
-        num++;
         for (int i = 0;i<8;i++){
-            cardDeck.add(new Beer("Beer",num));
+            cardDeck.add(new Beer("Beer"));
         }
-        num++;
         for (int i = 0;i<6;i++){
-            cardDeck.add(new CatBalou("CatBalou",num));
+            cardDeck.add(new CatBalou("Cat Balou"));
         }
-        num++;
         for (int i = 0;i<4;i++){
-            cardDeck.add(new MailCar("MailCar",num));
+            cardDeck.add(new MailCar("Mail Car"));
         }
-        num++;
         for (int i = 0;i<2;i++){
-            cardDeck.add(new Indians("Indians",num));
+            cardDeck.add(new Indians("Indians"));
         }
 
         Collections.shuffle(cardDeck);
@@ -70,24 +64,20 @@ public class Board {
         return deck;
     }
 
-    public void setDeck(ArrayList<Card> deck) {
-        this.deck = deck;
-    }
-
     public ArrayList<Card> getSideDeck() {
         return sideDeck;
-    }
-
-    public void setSideDeck(ArrayList<Card> sideDeck) {
-        this.sideDeck = sideDeck;
     }
 
     public ArrayList<Player> getPlayers() {
         return players;
     }
 
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
+    public void reshuffleDeck(){
+        this.deck = this.sideDeck;
+        sideDeck = new ArrayList<Card>();
+        Collections.shuffle(this.deck);
     }
+
+
 
 }

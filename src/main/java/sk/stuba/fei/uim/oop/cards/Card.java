@@ -2,8 +2,8 @@ package sk.stuba.fei.uim.oop.cards;
 
 import sk.stuba.fei.uim.oop.bang.Board;
 import sk.stuba.fei.uim.oop.bang.Player;
+import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Card {
@@ -11,9 +11,8 @@ public abstract class Card {
     protected int type;
     protected Random random;
 
-    public Card(String str,int i){
+    public Card(String str){
         this.name = str;
-        this.type = i;
         this.random = new Random();
     }
 
@@ -29,20 +28,39 @@ public abstract class Card {
         return this.name;
     }
 
-    public Board playedCard(Board board){
-        ArrayList<Card> sideDeck = board.getSideDeck();
-        sideDeck.add(this);
-        board.setSideDeck(sideDeck);
-        return board;
+    public void playedCard(Player player,Board board){
+        player.getHand().remove(this);
+        player.getInfront().remove(this);
+        board.getSideDeck().add(this);
     }
 
-    public int effect(Player player,Board board,String card){System.out.println("This card has no effect!"); return -1;}
+    public int effect(Player player,Board board,int playerIndex){System.out.println("This card has no effect!"); return -1;}
 
-    public void writeOutPlayers(Board board){
+    public int chooseAPlayer(Player player,Board board){
         System.out.println("Players in game !!!");
-        for (int i = 0;i<board.getPlayers().size();i++){
-            System.out.println("Player number: " + (i+1) + ", Name: " + board.getPlayers().get(i).getName());
+        for (int index = 0;index<board.getPlayers().size();index++){
+            if (board.getPlayers().get(index).getName().equals(player.getName())){
+                continue;
+            }
+            System.out.println("Player number: " + (index+1) + ", Name: " + board.getPlayers().get(index).getName());
         }
+        int choosenIndex = ZKlavesnice.readInt("Choose a player (by number): ");
+        if (choosenIndex > board.getPlayers().size() || choosenIndex <= 0){
+            while (choosenIndex > board.getPlayers().size() || choosenIndex <= 0){
+                choosenIndex = ZKlavesnice.readInt("Wrong input, try again: ");
+            }
+        }
+        return choosenIndex-1;
     }
+
+    public int hide(Player player,Board board){
+        int chanse = (random.nextInt() % 4) + 1;
+        if (chanse == 1){
+            playedCard(player,board);
+        }
+        return chanse;
+    }
+
+
 
 }

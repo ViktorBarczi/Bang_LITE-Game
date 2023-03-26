@@ -31,41 +31,23 @@ public class Player {
     }
 
 
-    public ArrayList<Card> addCardToHand(ArrayList<Card> d) {
+    public Card addCardToHand(Board board) {
+        if (board.getDeck().isEmpty()){
+            board.reshuffleDeck();
+        }
         Random rand = new Random();
-        Card c =d.get(rand.nextInt(d.size()));
-        d.remove(c);
-        this.hand.add(c);
-        return d;
-    }
-
-    public void removeCardFromHand(int i){
-        this.hand.remove(i);
-    }
-
-    public Card playCard(int i,Board board){
-        Card c = this.hand.get(i);
-        c.play(this,board);
-        this.hand.remove(i);
-        return c;
+        Card card = board.getDeck().get(rand.nextInt(board.getDeck().size()));
+        board.getDeck().remove(card);
+        this.hand.add(card);
+        return card;
     }
 
     public ArrayList<Card> getHand() {
         return hand;
     }
-
-    public void setHand(ArrayList<Card> hand) {
-        this.hand = hand;
-    }
-
     public ArrayList<Card> getInfront() {
         return infront;
     }
-
-    public void setInfront(ArrayList<Card> infront) {
-        this.infront = infront;
-    }
-
     public void placeInfrontPlayer(Card card){
         this.infront.add(card);
     }

@@ -3,25 +3,27 @@ package sk.stuba.fei.uim.oop.cards.blue;
 import sk.stuba.fei.uim.oop.bang.Board;
 import sk.stuba.fei.uim.oop.bang.Player;
 import sk.stuba.fei.uim.oop.cards.Card;
-import sk.stuba.fei.uim.oop.cards.brown.Bang;
 
 public class Barrel extends Card {
-    public Barrel(String str,int i) {
-        super(str,i);
-    }
-
-    public void play(Player p, Board board){
-        p.placeInfrontPlayer(this);
-
+    public Barrel(String str) {
+        super(str);
     }
 
     @Override
-    public int effect(Player player,Board board,String card) {
-        int chanse = (random.nextInt() % 4) + 1;
-        if (card.equals("Bang") && chanse == 1){
-            System.out.println("Player named: "+player.getName()+" hid behind the barrel !!!");
-            player.setLives(player.getLives()+1);
+    public void play(Player player, Board board){
+        for (int index = 0;index < player.getInfront().size();index++){
+            if (player.getInfront().get(index).getName().equals(this.name)){
+                System.out.println("You have allready have a " + this.name + " on the board !!!");
+                return;
+            }
         }
-        return chanse;
+        player.getHand().remove(this);
+        player.placeInfrontPlayer(this);
     }
+
+    @Override
+    public int effect(Player player,Board board,int playerIndex) {
+        return playerIndex;
+    }
+
 }

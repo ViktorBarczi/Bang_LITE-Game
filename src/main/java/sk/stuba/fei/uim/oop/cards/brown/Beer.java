@@ -6,13 +6,16 @@ import sk.stuba.fei.uim.oop.cards.Card;
 import sk.stuba.fei.uim.oop.bang.Player;
 
 public class Beer extends Card {
-    public Beer(String str,int i) {
-        super(str,i);
+    public Beer(String str) {
+        super(str);
     }
 
-    public void play(Player p, Board board){
-        int lives = p.getLives();
+    @Override
+    public void play(Player player, Board board){
+        int lives = player.getLives();
         lives = lives+1;
-        p.setLives(lives);
+        player.setLives(lives);
+        System.out.println("Player " + player.getName() + "'s lives: " + player.getLives());
+        playedCard(player,board);
     }
 }
