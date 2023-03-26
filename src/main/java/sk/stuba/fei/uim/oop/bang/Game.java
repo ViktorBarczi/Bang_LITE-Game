@@ -102,11 +102,6 @@ public class Game {
     }
 
     public void playerTurn (Player player){
-        /*if (player.getLives() > player.getHand().size()){
-            while (player.getHand().size() < player.getLives()){
-                player.addCardToHand(this.board);
-            }
-        }*/
             System.out.println("Lives: " + player.getLives());
             System.out.println("Cards: ");
             for (int index = 0; index < player.getHand().size(); index++) {

@@ -40,11 +40,12 @@ public abstract class Card {
             System.out.println("Player number: " + (index+1) + ", Name: " + board.getPlayers().get(index).getName());
         }
         int choosenIndex = ZKlavesnice.readInt("Choose a player (by number): ");
-        if (choosenIndex > board.getPlayers().size() || choosenIndex <= 0){
-            while (choosenIndex > board.getPlayers().size() || choosenIndex <= 0){
+        if (choosenIndex > board.getPlayers().size() || choosenIndex <= 0 || board.getPlayers().get(choosenIndex).getName().equals(player.getName())){
+            while (choosenIndex > board.getPlayers().size() || choosenIndex <= 0 || board.getPlayers().get(choosenIndex).getName().equals(player.getName())){
                 choosenIndex = ZKlavesnice.readInt("Wrong input, try again: ");
             }
         }
+
         return choosenIndex-1;
     }
 
