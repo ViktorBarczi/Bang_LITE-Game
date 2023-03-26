@@ -16,7 +16,7 @@ public class Bang extends Card {
         int playerIndex = chooseAPlayer(player,board);
         Player choosenPlayer = board.getPlayers().get(playerIndex);
         for(int cardIndex = 0; cardIndex < choosenPlayer.getInfront().size() ;cardIndex++){
-            if (!(choosenPlayer.getInfront().isEmpty()) && choosenPlayer.getInfront().get(cardIndex).getName().toString().equals("Barrel")){
+            if (!(choosenPlayer.getInfront().isEmpty()) && choosenPlayer.getInfront().get(cardIndex).getName().equals("Barrel")){
                 if (choosenPlayer.getInfront().get(cardIndex).hide(player,board) == 1) {
                     choosenPlayer.getInfront().get(cardIndex).playedCard(choosenPlayer,board);
                     System.out.println("Player " + choosenPlayer.getName() + "'s BARREL was HIT !!!");
@@ -27,7 +27,7 @@ public class Bang extends Card {
         }
 
         for(int cardIndex = 0; cardIndex < choosenPlayer.getHand().size() ;cardIndex++){
-            if (!(choosenPlayer.getHand().isEmpty()) && choosenPlayer.getHand().get(cardIndex).getName().toString().equals("Miss")){
+            if (!(choosenPlayer.getHand().isEmpty()) && choosenPlayer.getHand().get(cardIndex).getName().equals("Miss")){
                 choosenPlayer.getHand().get(cardIndex).playedCard(choosenPlayer,board);
                 System.out.println("Player " + choosenPlayer.getName() + " was MISSED !!!");
                 playedCard(player,board);

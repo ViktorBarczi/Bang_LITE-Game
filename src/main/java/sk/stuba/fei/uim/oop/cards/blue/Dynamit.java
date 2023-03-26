@@ -33,7 +33,7 @@ public class Dynamit extends Card {
         }
         else {
             player.removeFromInfornt(this);
-            int index = 0;
+            int index;
             for (index = 0;index<board.getPlayers().size();index++){
                 if (board.getPlayers().get(index).getName().equals(player.getName())){
 

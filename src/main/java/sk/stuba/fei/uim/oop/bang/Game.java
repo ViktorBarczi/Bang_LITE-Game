@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Game {
     private Board board;
-    private int playerIndex;
 
     public Game(){
         setUp();
@@ -14,7 +13,7 @@ public class Game {
     }
 
     public void setUp(){
-        int playersNum = 0;
+        int playersNum;
         System.out.println("Hello this is my version of the game Bang.");
         System.out.println("Please insert how many players are going to play: ");
 
@@ -37,12 +36,12 @@ public class Game {
     }
 
     public void runGame(){
-        this.playerIndex = 0;
+        int playerIndex = 0;
         do {
-            if (this.playerIndex == this.board.getPlayers().size()) {
-                this.playerIndex = 0;
+            if (playerIndex == this.board.getPlayers().size()) {
+                playerIndex = 0;
             }
-            Player player = this.board.getPlayers().get(this.playerIndex);
+            Player player = this.board.getPlayers().get(playerIndex);
 
             System.out.println();
             System.out.println();
@@ -69,13 +68,13 @@ public class Game {
             }
 
             int effectCount = 0;
-            int oldIndex = this.playerIndex;
+            int oldIndex = playerIndex;
             for (int cardIndex = 0;  cardIndex < player.getInfront().size(); cardIndex++){
-                this.playerIndex = player.getInfront().get(cardIndex).effect(player,this.board,this.playerIndex);
+                playerIndex = player.getInfront().get(cardIndex).effect(player,this.board, playerIndex);
                 effectCount++;
             }
 
-            if (this.playerIndex != oldIndex){
+            if (playerIndex != oldIndex){
                 continue;
             }
 
@@ -83,7 +82,7 @@ public class Game {
                 System.out.println("No effect has benn triggered !!!");
             }
 
-            player = this.board.getPlayers().get(this.playerIndex);
+            player = this.board.getPlayers().get(playerIndex);
 
 
             System.out.println("Card " + player.addCardToHand(this.board).getName() + " drawed");
@@ -95,7 +94,7 @@ public class Game {
                 playerTurn(player);
             }
 
-            this.playerIndex++;
+            playerIndex++;
         }
         while (this.board.getPlayers().size() != 1);
 

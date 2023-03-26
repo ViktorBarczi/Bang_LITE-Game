@@ -16,9 +16,9 @@ public class Board {
         this.players = allPlayers;
         this.deck = makeNewDeck();
         this.sideDeck = new ArrayList<>();
-        for (int i = 0;i<players.size();i++){
-            for (int j = 0;j<players.get(i).getLives();j++){
-                players.get(i).addCardToHand(this);
+        for (Player player : players) {
+            for (int help = 0; help < player.getLives(); help++) {
+                player.addCardToHand(this);
             }
         }
 
@@ -74,7 +74,7 @@ public class Board {
 
     public void reshuffleDeck(){
         this.deck = this.sideDeck;
-        sideDeck = new ArrayList<Card>();
+        sideDeck = new ArrayList<>();
         Collections.shuffle(this.deck);
     }
 

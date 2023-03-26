@@ -8,7 +8,6 @@ import java.util.Random;
 
 public abstract class Card {
     protected String name;
-    protected int type;
     protected Random random;
 
     public Card(String str){
@@ -18,10 +17,6 @@ public abstract class Card {
 
     public void play(Player p,Board board){
        System.out.println("You played a card!");
-    }
-
-    public int getType() {
-        return this.type;
     }
 
     public String getName() {
